@@ -4,14 +4,14 @@ const { createReadStream, createWriteStream } = require('fs');
 
 (async function() {
   try {
-    const STYLE_FOLDER_NAME = 'styles';
-    const BUILD_FOLDER_NAME = 'project-dist';
-    const BUNDLE_CSS_NAME = 'bundle.css';
+    const styleFolderName = 'styles';
+    const buildFolderName = 'project-dist';
+    const bundlerCssName= 'bundle.css';
 
-    const styleFolderPath = path.join(__dirname, STYLE_FOLDER_NAME);
+    const styleFolderPath = path.join(__dirname, styleFolderName);
 
     const files = await readdir(styleFolderPath, { withFileTypes: true });
-    const output = createWriteStream(path.join(__dirname, BUILD_FOLDER_NAME, BUNDLE_CSS_NAME));
+    const output = createWriteStream(path.join(__dirname, buildFolderName, bundlerCssName));
 
     for (const file of files) {
       const isCssFile = path.extname(file.name) === '.css';
